@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Salary Division Program</title>
+<style>
+    body {
+        font-family:sans-serif;
+        background: linear-gradient(to bottom right,lightblue, lightpink);
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        height: 79vh;
+    }
+    .container {
+        max-width: 400px;
+        margin-top: 20vh;
+        padding: 20px;
+        margin-left: 35%;
+        border: 3px solid rgb(24, 3, 3);
+        border-radius: 10px;
+        background-color: transparent;
+        backdrop-filter: blur(100%);
+    }
+
+    label{
+        font-weight: bold;
+        font-family: times new roman;
+    }
+
+    input{
+        background-color: transparent;
+        backdrop-filter: blur(18px);
+        border-radius: 5px;
+    }
+
+    .tombol{
+        display: flex;
+        gap: 1vh;
+    }
+
+    .tombol button{
+        width: 100px;
+        border: 2px solid black;
+        background-color: transparent;
+        border-radius: 20px;
+        font-weight: bold;
+    }
+
+   #nilai{
+    margin-top: 20px;
+    margin-left: 10px;
+   }
+
+   @media screen and (max-width:767px) {
+   
+    
+    .container{
+        width: 60%;
+        margin-left: -5px;
+
+    }
+
+    #nilai{
+        font-size: 13px;
+    }
+   }
+
+</style>
+</head>
+<body>
+<div class="container">
+    <h2>Program membagian gaji karyawn</h2>
+    <label for="GAJI">Total pendapatan sebulan:</label>
+    <input type="number" id="GAJI" placeholder="Masukan total pendapatan"><br><br>
+    <label for="jumlahKaryawan">jumlah Karyawan:</label>
+    <input type="number" id="jumlahKaryawan" placeholder="masukan total karyawan"><br><br>
+    <div class="tombol">
+    <button onclick="perhitunganGaji()">Calculate</button><br><br>
+    <button onclick="deletebuton()">delete</button>
+</div>
+    <div id="nilai"></div>
+
+</div>
+
+<script>
+function perhitunganGaji() {
+    const jumlahGaji = document.getElementById('GAJI').value;
+    const totalKaryawan = parseInt(document.getElementById('jumlahKaryawan').value);
+
+    if (isNaN(jumlahGaji) || isNaN(totalKaryawan) || jumlahGaji <= 0 || totalKaryawan <= 0) {
+        document.getElementById('nilai').innerHTML = 'nilai tidak valid';
+    } else {
+        const perGaji = jumlahGaji / totalKaryawan;
+        document.getElementById('nilai').innerHTML = `setiap karyawan akan mendapatkan Rp.${perGaji.toFixed(3)} setiap bulan.`;
+    }
+}
+
+ function deletebuton()  {
+    location.reload()
+ }
+
+
+</script>
+</body>
+</html>
